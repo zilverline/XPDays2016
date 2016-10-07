@@ -37,6 +37,13 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @todo_item = TodoItem.find(params[:id])
+    @todo_item.destroy
+
+    redirect_to todo_items_path
+  end
+
   private
     def todo_item_params
       params.require(:todo_item).permit(:title, :text)

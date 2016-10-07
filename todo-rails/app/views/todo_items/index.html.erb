@@ -16,6 +16,9 @@
         <td><%= item.text %></td>
         <td><%= link_to 'Show', todo_item_path(item) %></td>
         <td><%= link_to 'Edit', edit_todo_item_path(item) %></td>
+        <td><%= link_to 'Destoy', todo_item_path(item),
+                method: :delete,
+                data: { confirm: 'Are you sure?'} %></td>
       </tr>
   <% end %>
 </table>

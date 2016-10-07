@@ -3,8 +3,8 @@
 This repo contains:
 
 * Two react-native demos, both iOS and Android compatible:
-- Flexbox demo
-- ListView demo
+    - Flexbox demo
+    - ListView demo
 
 For each demo separately:
 $ npm install

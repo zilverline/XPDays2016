@@ -2,6 +2,7 @@ class TodoItemsController < ApplicationController
 
   def index
     @todo_items = TodoItem.all
+    render json: @todo_items
   end
 
   def show
@@ -46,6 +47,6 @@ class TodoItemsController < ApplicationController
 
   private
     def todo_item_params
-      params.require(:todo_item).permit(:title, :text)
+      params.require(:todo_item).permit(:title, :due_date)
     end
 end

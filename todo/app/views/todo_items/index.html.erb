@@ -1,0 +1,21 @@
+<h1>My To do list</h1>
+
+<%= link_to 'Add to do item', new_todo_item_path %>
+<br />
+<br />
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @todo_items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.text %></td>
+        <td><%= link_to 'Show', todo_item_path(item) %></td>
+        <td><%= link_to 'Edit', edit_todo_item_path(item) %></td>
+      </tr>
+  <% end %>
+</table>

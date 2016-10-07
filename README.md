@@ -16,3 +16,6 @@ To run a demo app in Android:
 $ react-native run-android
 
 * A todo app backend (Rails)
+http://localhost:3000
+
+* A todo app frontend (React-native)

@@ -36,23 +36,6 @@ export default class ToDo extends Component {
     this.fetchData();
   }
 
-  async fetchData() {
-    let response = await fetch(`${Config.current().url}/todo_items`, {
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (response.status === 200) {
-      let list = await response.json();
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(list),
-        loaded: true,
-      });
-    }
-  }
-
   render() {
     if (!this.state.loaded) {
       return this.renderLoadingView();
@@ -60,7 +43,7 @@ export default class ToDo extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>To do list</Text>
+        <Text style={styles.header}>To Do list</Text>
           <View>
             <TextInput
               placeholder={"Item title"}
@@ -106,9 +89,40 @@ export default class ToDo extends Component {
 
   renderButton() {
     return (
-      <TouchableOpacity onPress={this.addJob} style={[styles.button, {alignSelf: 'center'}]}>
+      <TouchableOpacity onPress={() => this.addJob} style={[styles.button, {alignSelf: 'center'}]}>
         <Text style={[styles.defaultButtonText]}>Add item</Text>
       </TouchableOpacity>
     );
+  }
+
+  async fetchData() {
+    let response = await fetch(`${Config.current().url}/todo_items`, {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.status === 200) {
+      let list = await response.json();
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(list),
+        loaded: true,
+      });
+    }
+  }
+
+  async addJob() {
+    console.log('add and newJob', this.state.newJob);
+    // let response = await fetch(`${Config.current().url}/todo_items/create`, {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     title: this.state.newJob,
+    //     due_date: this.state.newDeadline
+    //   })
+    // });
+    console.log(response.status);
   }
 }

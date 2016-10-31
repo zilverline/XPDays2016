@@ -1,5 +1,7 @@
 class TodoItemsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   def index
     @todo_items = TodoItem.all
     render json: @todo_items
@@ -18,14 +20,11 @@ class TodoItemsController < ApplicationController
   end
 
   def create
-    # render plain: params[:todo_item].inspect
     @todo_item = TodoItem.new(todo_item_params)
-
-    if @todo_item.save
-      redirect_to @todo_item
-    else
-      render 'new'
-    end
+     if @todo_item.save
+        @todo_items = TodoItem.all
+        render json: @todo_items
+     end
   end
 
   def update
@@ -42,7 +41,10 @@ class TodoItemsController < ApplicationController
     @todo_item = TodoItem.find(params[:id])
     @todo_item.destroy
 
-    redirect_to todo_items_path
+    @todo_items = TodoItem.all
+    render json: @todo_items
+
+    # redirect_to todo_items_path
   end
 
   private

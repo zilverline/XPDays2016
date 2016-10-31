@@ -1,4 +1,4 @@
 class TodoItem < ActiveRecord::Base
   validates :title, presence: true,
-                    length: { minimum: 5 }
+                    length: { minimum: 2 }
 end

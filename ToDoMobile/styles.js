@@ -17,6 +17,17 @@ export let styles = React.StyleSheet.create({
     borderWidth: 1,
     borderRadius: 6
   },
+  buttonSmall: {
+    height: 30,
+    width: 100,
+    backgroundColor: 'yellow',
+    paddingTop: 5,
+    paddingBottom: 10,
+    margin: 5,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 6
+  },
   defaultButtonText: {
     fontSize: 14,
     color: 'black',

@@ -14,12 +14,6 @@ import {
 import { styles } from './styles';
 import Config from './Config';
 
-var KLUSSEN = [
-  {title: 'Lijm van trap verwijderen', deadline: '4 juli'},
-  {title: 'Schroeven en pluggen uit de muren halen', deadline: '4 juli'},
-  {title: 'Laminaat verwijderen', deadline: '18 juli'}
-];
-
 export default class ToDo extends Component {
 
   constructor(props) {
@@ -29,6 +23,9 @@ export default class ToDo extends Component {
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
       loaded: false,
+      job: "",
+      deadline: "",
+      id: ""
     };
   }
 
@@ -48,20 +45,20 @@ export default class ToDo extends Component {
             <TextInput
               placeholder={"Item title"}
               style={styles.input}
-              onChangeText={(newJob) => this.setState({newJob})}
-              value={this.state.newJob}
+              onChangeText={(job) => this.setState({job})}
+              value={this.state.job}
             />
             <TextInput
               placeholder={"Deadline"}
               style={styles.input}
-              onChangeText={(newDeadline) => this.setState({newDeadline})}
-              value={this.state.newDeadline}
+              onChangeText={(deadline) => this.setState({deadline})}
+              value={this.state.deadline}
             />
             {this.renderButton()}
           </View>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this.renderJob}
+            renderRow={this.renderJob.bind(this)}
             style={styles.listView}
           />
       </View>
@@ -80,17 +77,25 @@ export default class ToDo extends Component {
 
   renderJob(job) {
     return (
-      <View>
-        <Text style={styles.item}>{job.title}</Text>
-        <Text style={styles.deadline}>{job.due_date}</Text>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'stretch'}}>
+        <View style={{flexDirection: 'column', justifyContent: 'space-between', marginRight: 20}}>
+          <Text style={styles.item}>{job.title}</Text>
+          <Text style={styles.deadline}>{job.due_date}</Text>
+        </View>
+        <TouchableOpacity onPress={() => this.deleteJob(job)} style={[styles.buttonSmall]}>
+          <Text style={[styles.defaultButtonText]}>Delete item</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.editJob(job)} style={[styles.buttonSmall]}>
+          <Text style={[styles.defaultButtonText]}>Edit item</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 
   renderButton() {
     return (
-      <TouchableOpacity onPress={() => this.addJob} style={[styles.button, {alignSelf: 'center'}]}>
-        <Text style={[styles.defaultButtonText]}>Add item</Text>
+      <TouchableOpacity onPress={() => this.saveJob()} style={[styles.button, {alignSelf: 'center'}]}>
+        <Text style={[styles.defaultButtonText]}>Save item</Text>
       </TouchableOpacity>
     );
   }
@@ -102,27 +107,58 @@ export default class ToDo extends Component {
         'Content-Type': 'application/json'
       }
     });
-    if (response.status === 200) {
-      let list = await response.json();
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(list),
-        loaded: true,
-      });
+    this.updateList(response);
+  }
+
+  saveJob() {
+    if (this.state.id) {
+      this.editJob();
+    }
+    else {
+        this.createJob();
     }
   }
 
-  async addJob() {
-    console.log('add and newJob', this.state.newJob);
-    // let response = await fetch(`${Config.current().url}/todo_items/create`, {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     title: this.state.newJob,
-    //     due_date: this.state.newDeadline
-    //   })
-    // });
-    console.log(response.status);
+  async editJob() {
+    console.log('save job is edit');
+  }
+
+  async createJob() {
+    let response = await fetch(`${Config.current().url}/todo_items`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: this.state.job,
+        due_date: this.state.deadline
+      })
+    });
+    this.updateList(response);
+    this.setState({job: "", deadline: "", id: ""})
+  }
+
+  async deleteJob(job) {
+    let response = await fetch(`${Config.current().url}/todo_items/${job.id}`, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    this.updateList(response);
+  }
+
+  editJob(job) {
+    this.setState({job: job.title, deadline: job.due_date, id: job.id});
+  }
+
+  async updateList(response) {
+    if (response.status === 200) {
+      let newList = await response.json();
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(newList),
+        loaded: true,
+      });
+    }
   }
 }

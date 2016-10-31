@@ -18,14 +18,20 @@ export default class ListviewDemo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text style={styles.listItem}>{rowData}</Text>}
-          renderHeader={() => <Text style={styles.header}>Months in a year</Text>}
-          renderSeparator={(sectionID, rowID) => <View key={rowID} style={styles.separator}/>}
-        />
+        <Text style={[styles.header, {alignSelf: 'center'}]}>Hello XP days</Text>
       </View>
     );
+  }
+
+  renderList() {
+    return (
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text style={styles.listItem}>{rowData}</Text>}
+        renderHeader={() => <Text style={styles.header}>Months in a year</Text>}
+        renderSeparator={(sectionID, rowID) => <View key={rowID} style={styles.separator}/>}
+      />
+    )
   }
 }
 

@@ -4,12 +4,9 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+  AppRegistry
 } from 'react-native';
 import MainApp from './Stateful'
 

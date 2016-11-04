@@ -1,0 +1,16 @@
+<h1>Tenants</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Id</th>
+  </tr>
+
+  <% @tenants.each do |tenant| %>
+      <tr>
+        <td><%= tenant.name %></td>
+        <td><%= tenant.id %></td>
+        <td><%= link_to 'Show', tenant_path(tenant) %></td>
+      </tr>
+  <% end %>
+</table>

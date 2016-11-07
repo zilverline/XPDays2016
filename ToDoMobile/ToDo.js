@@ -14,6 +14,8 @@ import {
 import { styles } from './styles';
 import Config from './Config';
 
+const tenant_id = 1;
+
 export default class ToDo extends Component {
 
   constructor(props) {
@@ -101,7 +103,7 @@ export default class ToDo extends Component {
   }
 
   async fetchData() {
-    let response = await fetch(`${Config.current().url}/todo_items`, {
+    let response = await fetch(`${Config.current().url}/tenants/${tenant_id}/todo_items`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -111,21 +113,20 @@ export default class ToDo extends Component {
   }
 
   saveJob() {
+    let url;
     if (this.state.id) {
-      this.editJob();
+      url = `${Config.current().url}/tenants/${tenant_id}/todo_items/${this.state.id}`;
+      this.createUpdateJob(url, 'put');
     }
     else {
-        this.createJob();
+      url = `${Config.current().url}/tenants/${tenant_id}/todo_items`;
+      this.createUpdateJob(url, 'post');
     }
   }
 
-  async editJob() {
-    console.log('save job is edit');
-  }
-
-  async createJob() {
-    let response = await fetch(`${Config.current().url}/todo_items`, {
-      method: 'post',
+  async createUpdateJob(url, saveMethod) {
+    let response = await fetch(url, {
+      method: saveMethod,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -139,7 +140,7 @@ export default class ToDo extends Component {
   }
 
   async deleteJob(job) {
-    let response = await fetch(`${Config.current().url}/todo_items/${job.id}`, {
+    let response = await fetch(`${Config.current().url}/tenants/${tenant_id}/todo_items/${job.id}`, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json'

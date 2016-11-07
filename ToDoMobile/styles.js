@@ -8,7 +8,7 @@ export let styles = React.StyleSheet.create({
   button: {
     height: 30,
     width: 200,
-    backgroundColor: 'yellow',
+    backgroundColor: 'black',
     paddingTop: 5,
     paddingBottom: 10,
     marginTop: 10,
@@ -20,7 +20,7 @@ export let styles = React.StyleSheet.create({
   buttonSmall: {
     height: 30,
     width: 100,
-    backgroundColor: 'yellow',
+    backgroundColor: 'black',
     paddingTop: 5,
     paddingBottom: 10,
     margin: 5,
@@ -30,14 +30,14 @@ export let styles = React.StyleSheet.create({
   },
   defaultButtonText: {
     fontSize: 14,
-    color: 'black',
+    color: 'gold',
     textAlign: 'center'
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'yellow',
+    backgroundColor: 'gold',
     padding: 50
   },
   header: {
@@ -62,7 +62,8 @@ export let styles = React.StyleSheet.create({
     marginTop: 10,
     paddingLeft: 5,
     textAlign: 'left',
-    fontSize: 14
+    fontSize: 14,
+    borderRadius: 6
   },
   item: {
     paddingTop: 10,

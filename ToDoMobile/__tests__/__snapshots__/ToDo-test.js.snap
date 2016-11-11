@@ -1,0 +1,150 @@
+exports[`test renders a todo_item 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "stretch",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+    }
+  }>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginRight": 20,
+      }
+    }>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "paddingTop": 10,
+          "textAlign": "left",
+        }
+      }>
+      Eerste item
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "red",
+          "textAlign": "left",
+        }
+      } />
+  </View>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hitSlop={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "borderColor": "black",
+        "borderRadius": 6,
+        "borderWidth": 1,
+        "height": 30,
+        "margin": 5,
+        "opacity": 1,
+        "paddingBottom": 10,
+        "paddingTop": 5,
+        "width": 100,
+      }
+    }
+    testID={undefined}>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "gold",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+        ]
+      }>
+      Delete item
+    </Text>
+  </View>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hitSlop={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "borderColor": "black",
+        "borderRadius": 6,
+        "borderWidth": 1,
+        "height": 30,
+        "margin": 5,
+        "opacity": 1,
+        "paddingBottom": 10,
+        "paddingTop": 5,
+        "width": 100,
+      }
+    }
+    testID={undefined}>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "gold",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+        ]
+      }>
+      Edit item
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`test renders shows the loading message 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "gold",
+      "flex": 1,
+      "justifyContent": "center",
+      "padding": 50,
+    }
+  }>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail">
+    Loading todo items...
+  </Text>
+</View>
+`;

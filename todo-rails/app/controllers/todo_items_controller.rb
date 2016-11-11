@@ -23,25 +23,21 @@ class TodoItemsController < ApplicationController
     @tenant = Tenant.find(params[:tenant_id])
     @todo_item = @tenant.todo_items.create(todo_item_params)
 
-    render json: @tenant.todo_items
+    if @todo_item.valid?
+      render json: @tenant.todo_items
+    else
+      render json: {errors: @todo_item.errors}, status: :unprocessable_entity
+    end
+
   end
 
   def update
-
     @tenant = Tenant.find(params[:tenant_id])
     @todo_item = @tenant.todo_items.find(params[:id])
 
     @todo_item.update(todo_item_params)
 
     render json: @tenant.todo_items
-
-    # @todo_item = TodoItem.find(params[:id])
-    #
-    # if @todo_item.update(todo_item_params)
-    #   redirect_to @todo_item
-    # else
-    #   render 'edit'
-    # end
   end
 
   def destroy

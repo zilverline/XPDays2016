@@ -2,9 +2,10 @@
 
 This repo contains:
 
-* Two react-native demos, both iOS and Android compatible:
+* Three react-native demos, iOS and Android compatible:
     - Flexbox demo
     - ListView demo
+    - Stateful/stateless demo
 
 For each demo separately:
 $ npm install

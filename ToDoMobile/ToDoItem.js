@@ -15,10 +15,10 @@ export const ToDoItem = (props) => {
       <Text style={styles.deadline}>{to_do_item.due_date}</Text>
     </View>
     <TouchableOpacity onPress={() => props.deleteToDoItem(to_do_item)} style={[styles.buttonSmall]}>
-      <Text style={[styles.defaultButtonText]}>Delete item</Text>
+      <Text style={[styles.defaultButtonText]}>Delete</Text>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => props.editToDoItem(to_do_item)} style={[styles.buttonSmall]}>
-      <Text style={[styles.defaultButtonText]}>Edit item</Text>
+      <Text style={[styles.defaultButtonText]}>Edit</Text>
     </TouchableOpacity>
   </View>
 }

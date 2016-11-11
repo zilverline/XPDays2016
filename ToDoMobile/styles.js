@@ -19,7 +19,7 @@ export let styles = React.StyleSheet.create({
   },
   buttonSmall: {
     height: 30,
-    width: 100,
+    width: 80,
     backgroundColor: 'black',
     paddingTop: 5,
     paddingBottom: 10,

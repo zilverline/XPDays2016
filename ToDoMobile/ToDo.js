@@ -137,12 +137,15 @@ export default class ToDo extends Component {
   }
 
   async updateList(response) {
+    let json = await response.json();
     if (response.status === 200) {
-      let newList = await response.json();
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(newList),
+        dataSource: this.state.dataSource.cloneWithRows(json),
         loaded: true,
       });
+    }
+    else {
+      console.log('errors in response', json.errors);
     }
   }
 }

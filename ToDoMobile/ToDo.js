@@ -13,6 +13,7 @@ import {
 
 import { styles } from './styles';
 import Config from './Config';
+import { ToDoItem } from './ToDoItem'
 
 const tenant_id = 1;
 
@@ -25,7 +26,7 @@ export default class ToDo extends Component {
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
       loaded: false,
-      job: "",
+      to_do_item: "",
       deadline: "",
       id: ""
     };
@@ -39,7 +40,6 @@ export default class ToDo extends Component {
     if (!this.state.loaded) {
       return this.renderLoadingView();
     }
-
     return (
       <View style={styles.container}>
         <Text style={styles.header}>To Do list</Text>
@@ -47,8 +47,8 @@ export default class ToDo extends Component {
             <TextInput
               placeholder={"Item title"}
               style={styles.input}
-              onChangeText={(job) => this.setState({job})}
-              value={this.state.job}
+              onChangeText={(to_do_item) => this.setState({to_do_item})}
+              value={this.state.to_do_item}
             />
             <TextInput
               placeholder={"Deadline"}
@@ -60,7 +60,7 @@ export default class ToDo extends Component {
           </View>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this.renderJob.bind(this)}
+            renderRow={(to_do_item) => <ToDoItem to_do_item={to_do_item} deleteToDoItem={(to_do_item) => this.deleteToDoItem(to_do_item)} editToDoItem={() => this.editToDoItem(to_do_item)} />}
             style={styles.listView}
           />
       </View>
@@ -73,23 +73,6 @@ export default class ToDo extends Component {
         <Text>
            Loading todo items...
         </Text>
-      </View>
-    );
-  }
-
-  renderJob(job) {
-    return (
-      <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'stretch'}}>
-        <View style={{flexDirection: 'column', justifyContent: 'space-between', marginRight: 20}}>
-          <Text style={styles.item}>{job.title}</Text>
-          <Text style={styles.deadline}>{job.due_date}</Text>
-        </View>
-        <TouchableOpacity onPress={() => this.deleteJob(job)} style={[styles.buttonSmall]}>
-          <Text style={[styles.defaultButtonText]}>Delete item</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.editJob(job)} style={[styles.buttonSmall]}>
-          <Text style={[styles.defaultButtonText]}>Edit item</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -131,16 +114,16 @@ export default class ToDo extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        title: this.state.job,
+        title: this.state.to_do_item,
         due_date: this.state.deadline
       })
     });
     this.updateList(response);
-    this.setState({job: "", deadline: "", id: ""})
+    this.setState({to_do_item: "", deadline: "", id: ""})
   }
 
-  async deleteJob(job) {
-    let response = await fetch(`${Config.current().url}/tenants/${tenant_id}/todo_items/${job.id}`, {
+  async deleteToDoItem(to_do_item) {
+    let response = await fetch(`${Config.current().url}/tenants/${tenant_id}/todo_items/${to_do_item.id}`, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json'
@@ -149,8 +132,8 @@ export default class ToDo extends Component {
     this.updateList(response);
   }
 
-  editJob(job) {
-    this.setState({job: job.title, deadline: job.due_date, id: job.id});
+  editToDoItem(to_do_item) {
+    this.setState({to_do_item: to_do_item.title, deadline: to_do_item.due_date, id: to_do_item.id});
   }
 
   async updateList(response) {

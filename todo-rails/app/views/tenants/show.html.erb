@@ -1,22 +1,21 @@
-<div class="container">
-  <h3> <%= @tenant.name %> </h3>
+<div style="background-color: #e5e5e5;padding:20px">
+  <div class="container">
+    <h3> <%= @tenant.name %> </h3>
+    <h3> id: <%= @tenant.id %> </h3>
 
-  <h3> id: <%= @tenant.id %> </h3>
+    <br />
 
-  <br />
-  <br />
-
-  <div class="list-group">
-    <p class="list-group-item active">API</p>
-    <p class="list-group-item">GET:  /tenants/<%=@tenant.id %>/todo_items</p>
-    <p class="list-group-item">POST: /tenants/<%=@tenant.id %>/todo_items</p>
-    <p class="list-group-item">PUT:  /tenants/<%=@tenant.id %>/todo_items/{item_id}</p>
-    <p class="list-group-item">DELETE: /tenants/<%=@tenant.id %>/todo_items/{item_id}</p>
-
+    <div class="list-group">
+      <p class="list-group-item active">API</p>
+      <p class="list-group-item">GET:  /tenants/<%=@tenant.id %>/todo_items</p>
+      <p class="list-group-item">POST: /tenants/<%=@tenant.id %>/todo_items</p>
+      <p class="list-group-item">PUT:  /tenants/<%=@tenant.id %>/todo_items/{item_id}</p>
+      <p class="list-group-item">DELETE: /tenants/<%=@tenant.id %>/todo_items/{item_id}</p>
+    </div>
   </div>
+</div>
 
-  <br />
-  <br />
+<div class="container">
   <h3>Add a todo item</h3>
 
   <%= form_for([@tenant, @tenant.todo_items.build]) do |f| %>
@@ -32,10 +31,12 @@
         <%= f.submit 'Add item' , :class =>"btn btn-lg btn-primary" %>
       </p>
   <% end %>
+</div>
 
-  <br />
-  <br />
+<br />
+<br />
 
+<div class="container">
   <h3>To do items</h3>
 
   <table class="table table-striped">

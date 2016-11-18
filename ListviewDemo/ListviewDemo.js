@@ -40,18 +40,13 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 30,
     justifyContent: 'center',
-    backgroundColor: '#33cc33',
+    backgroundColor: 'yellowgreen',
   },
   header: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
     color: 'white',
-  },
-  listItem: {
-    fontSize: 16,
-    padding: 20,
-    color: 'black',
   },
   separator: {
     borderColor: 'black',

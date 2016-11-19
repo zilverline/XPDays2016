@@ -38,34 +38,24 @@ exports[`test renders a to_do_item 1`] = `
         }
       } />
   </View>
-  <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    hitSlop={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
     style={
-      Object {
-        "backgroundColor": "black",
-        "borderColor": "black",
-        "borderRadius": 6,
-        "borderWidth": 1,
-        "height": 30,
-        "margin": 5,
-        "opacity": 1,
-        "paddingBottom": 10,
-        "paddingTop": 5,
-        "width": 80,
-      }
-    }
-    testID={undefined}>
+      Array [
+        Object {
+          "backgroundColor": "black",
+          "borderColor": "black",
+          "borderRadius": 6,
+          "borderWidth": 1,
+          "height": 30,
+          "margin": 5,
+          "paddingBottom": 10,
+          "paddingTop": 5,
+          "width": 80,
+        },
+      ]
+    }>
     <Text
       accessible={true}
       allowFontScaling={true}
@@ -81,35 +71,25 @@ exports[`test renders a to_do_item 1`] = `
       }>
       Delete
     </Text>
-  </View>
-  <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    hitSlop={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+  </TouchableOpacity>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
     style={
-      Object {
-        "backgroundColor": "black",
-        "borderColor": "black",
-        "borderRadius": 6,
-        "borderWidth": 1,
-        "height": 30,
-        "margin": 5,
-        "opacity": 1,
-        "paddingBottom": 10,
-        "paddingTop": 5,
-        "width": 80,
-      }
-    }
-    testID={undefined}>
+      Array [
+        Object {
+          "backgroundColor": "black",
+          "borderColor": "black",
+          "borderRadius": 6,
+          "borderWidth": 1,
+          "height": 30,
+          "margin": 5,
+          "paddingBottom": 10,
+          "paddingTop": 5,
+          "width": 80,
+        },
+      ]
+    }>
     <Text
       accessible={true}
       allowFontScaling={true}
@@ -125,7 +105,7 @@ exports[`test renders a to_do_item 1`] = `
       }>
       Edit
     </Text>
-  </View>
+  </TouchableOpacity>
 </View>
 `;
 

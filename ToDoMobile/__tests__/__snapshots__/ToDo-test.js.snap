@@ -1,4 +1,4 @@
-exports[`test renders a todo_item 1`] = `
+exports[`test renders a to_do_item 1`] = `
 <View
   style={
     Object {
@@ -62,7 +62,7 @@ exports[`test renders a todo_item 1`] = `
         "opacity": 1,
         "paddingBottom": 10,
         "paddingTop": 5,
-        "width": 100,
+        "width": 80,
       }
     }
     testID={undefined}>
@@ -79,7 +79,7 @@ exports[`test renders a todo_item 1`] = `
           },
         ]
       }>
-      Delete item
+      Delete
     </Text>
   </View>
   <View
@@ -106,7 +106,7 @@ exports[`test renders a todo_item 1`] = `
         "opacity": 1,
         "paddingBottom": 10,
         "paddingTop": 5,
-        "width": 100,
+        "width": 80,
       }
     }
     testID={undefined}>
@@ -123,7 +123,7 @@ exports[`test renders a todo_item 1`] = `
           },
         ]
       }>
-      Edit item
+      Edit
     </Text>
   </View>
 </View>
